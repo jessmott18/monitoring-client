@@ -61,7 +61,7 @@ docker compose up -d
 ```
 
 ---
-## 📡 Configure Prometheus on Monitoring Server
+## Configure Prometheus on Monitoring Server
 
 On the Monitoring server, edit the `prometheus.yml` file to include your client server:
 

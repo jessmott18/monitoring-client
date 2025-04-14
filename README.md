@@ -36,6 +36,7 @@ wget https://raw.githubusercontent.com/jessmott18/monitoring/main/install-node-e
 chmod +x install-node-exporter.sh
 ./install-node-exporter.sh
 ```
+Check out this for full docs: https://docs.techdox.nz/node-exporter/
 
 You can disable Node Exporter anytime:
 

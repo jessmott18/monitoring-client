@@ -2,6 +2,10 @@
 
 This repository is designed to send **logs and metrics** from a client server to a central Monitoring server that runs Grafana, Prometheus, Loki, and Alloy.
 
+📦 What's Included
+docker-compose.yml – Runs alloy
+config.alloy – Alloy log forwarding setup
+
 ## 🔧 Requirements
 
 - Docker & Docker Compose installed

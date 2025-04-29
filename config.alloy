@@ -21,6 +21,29 @@ loki.source.docker "log_scrape" {
         refresh_interval = "5s"
 }
 
+local.file_match "debug_log" {
+  path_targets = [
+    {__path__ = "/tmp/*.log" },
+  ]
+}
+
+discovery.relabel "add_labels" {
+  targets = local.file_match.debug_log.targets
+
+  rule {
+    action        = "replace"
+    source_labels = ["__path__"]
+    regex         = ".*/([^/]+)\\.log"
+    target_label  = "job"
+    replacement   = "$1"
+  }
+}
+
+loki.source.file "debug_log" {
+  targets = discovery.relabel.add_labels.output
+  forward_to = [loki.write.default.receiver]
+}
+
 loki.write "default" {
         endpoint {
                 url       = "http://<LogServerIP>:3100/loki/api/v1/push"

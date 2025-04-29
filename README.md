@@ -45,6 +45,17 @@ sudo systemctl disable node_exporter
 ```
 
 ---
+## Recommended File Updates:
+Inside `config.alloy`:
+```
+local.file_match "debug_log" {
+  path_targets = [
+    --> {__path__ = "/tmp/*.log" },
+        {__path__ = "..."},
+  ]
+}
+```
+To collect logs by directory/file: **Update** `__path__ = "..."`  line with desired path to directory/files
 
 ##  Update `config.alloy`
 

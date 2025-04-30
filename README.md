@@ -48,7 +48,7 @@ sudo systemctl disable node_exporter
 ## Recommended File Updates:
 ##  Update `config.alloy`
 
-Replace `<LogServerIP>` with your **Monitoring Server's IP address**.
+At the very bottom og the file -- Replace `<LogServerIP>` with your **Monitoring Server's IP address**.
 
 ```hcl
 loki.write "default" {
@@ -60,7 +60,7 @@ loki.write "default" {
 }
 ```
 
-Inside `config.alloy`:
+Also inside `config.alloy`:
 ```
 local.file_match "debug_log" {
   path_targets = [
@@ -83,15 +83,15 @@ docker compose up -d
 ---
 ## Configure Prometheus on Monitoring Server
 
-On the Monitoring server, edit the `prometheus.yml` file to include your client server:
+On the **main Monitoring server**, edit the `prometheus.yml` file to include **this** client server:
 
 ```yaml
 - job_name: "server"
   static_configs:
-    - targets: ['<YourServerIP>:9100']
+    - targets: ['<ThisServerIP>:9100']
 ```
 
-Replace `<YourServerIP>` with the IP address of this client server.
+Replace `<ThisServerIP>` with the IP address of this client server.
 
 ---
 

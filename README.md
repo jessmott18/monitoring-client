@@ -114,6 +114,23 @@ Replace `ThisServerIP` with the IP address of this client server.
 
 ---
 
+## Testing:
+### To view metrics of this server: 
+
+View inside dashboard in Grafana ex. NodeExporter
+
+Note: The job name you choose in the prometheus.yml is the name this client server will show up as. 
+
+### To view logs of this server: 
+
+Run this command in this client server: 
+```
+echo "$(date) This is a test log line from client server " >> /tmp/test-app.log
+```
+
+You can view this log inside Grafana underneath Drilldown --> Logs
+
+
 ## ✅ Done!
 
 - Logs are forwarded to Loki running on Main Monitoring Server via Alloy

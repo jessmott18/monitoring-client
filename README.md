@@ -48,7 +48,7 @@ sudo systemctl disable node_exporter
 ## Recommended File Updates:
 ##  Update `config.alloy`
 
-At the very bottom og the file -- Replace `<LogServerIP>` with your **Monitoring Server's IP address**.
+At the very bottom of the file -- Replace `<LogServerIP>` with your **Monitoring Server's IP address**.
 
 ```hcl
 loki.write "default" {
@@ -80,7 +80,7 @@ alloy:
     ports:
       - "12345:12345"
     volumes: 
-      - /tmp:/tmp                                               # <---- This mounts the system tmp directory to collects logs from files within /tmp
+      - /tmp:/tmp                                                # <---- This mounts the system tmp directory to collects logs from files within /tmp
 ++++  - /newDirectory:/newDirectory                              # add more lines like this to mount into needed directories
       - alloy-data:/var/lib/alloy/data                          
       - ./config.alloy:/etc/alloy/config.alloy                 

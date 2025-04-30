@@ -107,18 +107,18 @@ On the **main Monitoring server**, edit the `prometheus.yml` file to include **t
 ```yaml
 - job_name: "server"
   static_configs:
-    - targets: ['<ThisServerIP>:9100']
+    - targets: ['ThisServerIP:9100']
 ```
 
-Replace `<ThisServerIP>` with the IP address of this client server.
+Replace `ThisServerIP` with the IP address of this client server.
 
 ---
 
 ## ✅ Done!
 
-- Logs are forwarded to Loki via Alloy
+- Logs are forwarded to Loki running on Main Monitoring Server via Alloy
     
 - Metrics are collected via Node Exporter and sent to Prometheus
     
 
-You can now monitor this server using the "Logs" section under the "Explore" option on the Monitoring server.
+You can now monitor this server using the "Logs" section under the "Drilldown" option & Dashboards to view metrics on the Main Monitoring server.

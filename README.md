@@ -53,7 +53,7 @@ At the very bottom og the file -- Replace `<LogServerIP>` with your **Monitoring
 ```hcl
 loki.write "default" {
   endpoint {
-    url       = "http://<LogServerIP>:3100/loki/api/v1/push"
+    url       = "http://LogServerIP:3100/loki/api/v1/push"
     tenant_id = "tenant1"
   }
   external_labels = {}
@@ -70,6 +70,25 @@ local.file_match "debug_log" {
 }
 ```
 To collect logs by directory/file: **Update** `__path__ = "..."`  line with desired path to directory/files
+
+## Update `docker-compose.yml`
+In order for Alloy to be able to access these files, you must add the directory into the `docker-compose.yml`
+```
+alloy:
+    image: grafana/alloy:latest
+    container_name: alloy
+    ports:
+      - "12345:12345"
+    volumes: 
+      - /tmp:/tmp                                               # <---- This mounts the system tmp directory to collects logs from files within /tmp
+++++  - /newDirectory:/newDirectory                              # add more lines like this to mount into needed directories
+      - alloy-data:/var/lib/alloy/data                          
+      - ./config.alloy:/etc/alloy/config.alloy                 
+      - /var/run/docker.sock:/var/run/docker.sock                            
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy      
+    restart: unless-stopped
+```
+
 
 
 ---

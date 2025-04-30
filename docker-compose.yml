@@ -8,9 +8,10 @@ services:
     ports:
       - "12345:12345"
     volumes:
-      - alloy-data:/var/lib/alloy/data  # Persistent storage for Alloy data
-      - ./config.alloy:/etc/alloy/config.alloy
-      - /var/run/docker.sock:/var/run/docker.sock
+      - /tmp:/tmp                                                               # Temporary example mounts directory contents /tmp
+      - alloy-data:/var/lib/alloy/data                                          # Persistent storage for Alloy data
+      - ./config.alloy:/etc/alloy/config.alloy                                  # Mount config file
+      - /var/run/docker.sock:/var/run/docker.sock                               # Mount docker socket 
     command: run --server.http.listen-addr=127.0.0.1:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
     restart: unless-stopped
 

@@ -14,13 +14,6 @@ This repository is designed to send **logs and metrics** from a client server to
 - Docker & Docker Compose installed
     
 - Access to the Monitoring server IP
-    
-- Network access to ports 3100 (Loki) and 9100 (Node Exporter)
-
-Note: For protection, lock down access to only main Grafana server
-
-`sudo ufw allow from <main_grafana_server_ip> to any port 9100`
-`sudo ufw allow from <main_grafana_server_ip> to any port 3100`
 
 
 ---
